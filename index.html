@@ -1,101 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> CIS 223 Chapter 4 Program </title>
-        <script>
-            function getStudent()                                                           //function to start grade report
-            {                                                                               //
-                var num=1;                                                                  //
-                var total=0;                                                                //
-                document.write('<h1> Student Grade Report </h1>');                          //write title
-                document.write('<table width="50%" border="1">');                           //create table
-
-                var firstName = prompt ("Enter student's first name:");                     //prompt student's first name
-                var lastName = prompt ("Enter student's last name:");                       //prompt student's last name
-
-                document.write('<tr>');                                                     //open table row
-                document.write('<td width="50">' + "First Name" + '</td>');                 //create cell for "first name" prompt
-                document.write('<td width="50">' + firstName.toUpperCase() + '</td>');      //create cell for first name response 
-                //document.write('</tr>');                                                  //close table row
-
-                document.write('<tr>');                                                     //open table row
-                document.write('<td width="50">' + "Last Name" + '</td>');                  //create cell for "last name" prompt
-                document.write('<td width="50">' + lastName.toLowerCase() + '</td>');       //create cell for last name response 
-                //document.write('</tr>');                                                  //close table row
-
-                var input = prompt("Enter Grade " + num + " (-1 to stop):");
-
-			do                                                                              //while loop to prompt students grades to be entered
-			{
-				points = parseInt(input);                                                   //parse points variable to integer
-
-				if (Number.isNaN(points) || points < 0) {
-					alert("Please enter a valid number greater than 0");
-				}
-
-				else if (points >= 0 && points <= 100) {
-					document.write('<tr>');                                                 //open table row
-					document.write('<td width="50">' + "Grade " + num + " " + '</td>');     //create cell for "points" prompt
-					document.write('<td width="50">' + points + '</td>');                   //create cell for points response
-					//document.write('</tr>');
-
-					total += points;
-					num++;                                                                  
-				}
-
-                else {
-                        var points = prompt("Please re-enter Grade "+num+":");
-                    }
-
-				input = prompt("Enter Grade " + num + " (-1 to stop):");
-
-			}   while (input != "-1")
-
-                    num--;                                                                  //last -1 entry not counted
-                    
-                    var average = (total/num).toFixed(2);
-                    alert(average);
-                    document.write('</table>');
-                    document.write("<p> Semester Average: "+average+" </p> <hr>");
-                    
-                    var grade = Math.floor(average/10);
-                    alert(grade);
-
-                    
-                    switch(true)
-                    {
-                        case (grade >= 9 && grade <= 10):
-                            document.write('<p> Based on your semester average, your grade falls between 90 and 100% </p>');
-                            grade = 'A';
-                            break;
-                        case (grade >= 8 && grade < 9):
-                            document.write('<p> Based on your semester average, your grade falls between 80 and 89% </p>');
-                            grade = 'B';
-                            break;
-                        case (grade >= 7 && grade < 8):
-                            document.write('<p> Based on your semester average, your grade falls between 70 and 79% </p>');
-                            grade = 'C';
-                            break;
-                        case (grade >= 6 && grade < 7):
-                            document.write('<p> Based on your semester average, your grade falls between 60 and 69% </p>');
-                            grade = 'D';
-                            break;
-                        case (grade < 6):
-                            document.write('<p> Based on your semester average, your grade falls below 60% </p>');
-                            grade = 'F';
-                            break;
-                        default:
-                            alert("Grade calculated:");
-                            break;
-                    }
-                
-                document.write("<p>" + "You have earned a(n) "+grade+" this semester." + "</p>");
-            }
-        </script> 
+        <title> CIS 223 Program Directory </title>
     </head>
     <body>
-        <h1> Student Grade Report </h1>
-        <h3> Click the button to begin! </h3>
-        <input type="button" value="Calculate" onClick="getStudent()">
+		<head>
+			<a href="index.html"> <h1> Program Directory </h1> </a>
+			<hr> <br> <br>
+		</head>
+		<nav>
+			<a href="index.html"> Directory </a> &nbsp;
+			<a href="Porrey_Lab1"> Program 1 </a> &nbsp;
+			<a href="Porrey_Lab2"> Program 2 </a> &nbsp;
+			<a href="Porrey_Lab3"> Program 3 </a> &nbsp;
+			<a href="Porrey_Lab4"> Program 4 </a> &nbsp;
+		</nav>
+		<br> <br> <hr> <br> <br>
+		<main>
+			<h1> CIS 223 Program Directory </h1>
+			<p> Click above to navigate to different programs--</p>
+		</main>
+		<footer>
+			<em> <p> Thanks! :) </p> </em>
+		</footer>
     </body>
 </html>
