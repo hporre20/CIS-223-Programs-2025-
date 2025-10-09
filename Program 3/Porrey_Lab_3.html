@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title> CIS Chapter 3 Program </title>
+        <script type="text/javascript">
+            function CalculatePay()
+            {
+                                                                                //
+                var employeeName = prompt("Enter employee's name");             //var to prompt user to input employee name
+                document.getElementById("Name").innerHTML = employeeName;       //method to put answer on page where prompt is
+                                                                                //
+                var wage = prompt("Enter employee's hourly wage");              //var to prompt user to enter employee hourly wage
+                document.getElementById("Rate").innerHTML = wage;               //method to put answer on page where prompt is
+                                                                                //
+                var hours = prompt("Enter number of hours worked");             //var to prompt user to enter employee # of hours worked
+                document.getElementById("Hours").innerHTML = hours;             //method to put answer on page where prompt is
+                                                                                //
+                var dependents = prompt("Enter number of dependents");          //var to prompt employee's # of dependents
+                document.getElementById("Dependents").innerHTML = dependents;   //method to put answer on page where prompt is
+                                                                                //                                                              
+                if (hours > 40)                                                 //if statement - over 40 hrs worked overtime is 1.5x regular rate
+                {                                                               //
+                    var overtime = wage * 1.5 * (hours - 40);                   //calculate amt paid for overtime
+                    var regular = wage * 40;                                    //calculate amt paid for normal hours
+                    var gross = overtime + regular;                             //calculate total gross amount paid for work
+                }                                                               //
+                                                                                //                
+                else                                                            //if not over 40hrs then calculate
+                {                                                               //
+                    var gross = hours * wage;                                   //regular pay rate w/o overtime
+                }                                                               //
+                                                                                //
+                document.getElementById("Gross").innerHTML = gross;             //write gross pay where prompted
+                                                                                //
+                                                                                //new funtion: taxes calculated
+                if (dependents <1 && gross > 1000)                              //if <1 dependent & gross pay >$1000 = 33%
+                {                                                               //
+                    var taxRate = 33;                                           //tax rate to be displayed
+                    var tax = gross *.33;                                       //calculate taxes taken out
+                }                                                               //
+                                                                                //
+                else if (dependents <1 && gross <= 1000)                        //if <1 dependent & gross pay < or equal $1000 = 28%
+                {                                                               //
+                    var taxRate = 28;                                           //tax rate to be displayed
+                    var tax = gross *.28;                                       //calculate taxes to be taken out
+                }                                                               //
+                                                                                //                
+                else if (dependents >=1 && dependents <=3 && gross >1000)       //if dep >1 or <3 & gross pay >$1000 = 25%
+                {                                                               //
+                    var taxRate = 25;                                           //tax rate to be displayed
+                    var tax = gross *.25;                                       //calculate taxes to be taken out
+                }                                                               //
+                                                                                //
+                else if (dependents >=1 && dependents <=3 && gross <=1000)      //if dep >1 or <3 & gross pay < or euqal $1000 = 22%
+                {                                                               //
+                    var taxRate = 22;                                           //tax rate to be displayed
+                    var tax = gross * .22;                                      //calculate taxes to be taken out
+                }                                                               //
+                                                                                //                
+                else if (dependents >=4 && dependents <=6 && gross >1000)       //if >4 or <6 & gross pay >$1000 = 22%
+                {                                                               //
+                    var taxRate = 22;                                           //tax rate to be displayed
+                    var tax = gross * .22;                                      //calculate tax to be taken out
+                }                                                               //
+                                                                                //
+                else if (dependents >=4 && dependents <=6 && gross <= 1000)     //if >4 or <6 & gross pay < or equal $1000 = 15%
+                {                                                               //
+                    var taxRate = 15;                                           //tax rate to be displayed
+                    var tax = gross * .15;                                      //calculate taxes to be taken out
+                }                                                               //
+                                                                                //
+                else if (dependents >6 && gross > 1000)                         //if >6 & gross pay >$1000 = 15%
+                {                                                               //
+                    var taxRate = 15;                                           //tax rate to be displayed
+                    var tax = gross * .15;                                      //calculate taxes to be taken out
+                }                                                               //
+                                                                                //
+                else if (dependents >6 && gross <= 1000)                        //if >6 & gross pay < or equal $1000 = 10%
+                {                                                               //
+                    var taxRate = 10;                                           //tax rate to be displayed
+                    var tax = gross * .10;                                      //calculate taxes to be taken out
+                }                                                               //
+                                                                                //
+                document.getElementById("Tax").innerHTML = taxRate;             //method to write tax rate on page where prompted
+                                                                                //
+                var net = gross - tax;                                          //calculate net pay
+                document.getElementById("Net").innerHTML = net;                 //method to write net pay on page where prompted
+                                                                                //
+            }
+        </script>
+    </head>
+    <body>
+        <h1> This is my Lab Assignment #3 </h1>
+        <input type="button" value="Calculate Pay" onClick="CalculatePay()">
+        <div id="container">
+            <p> Employee Name: <span id="Name"> First Last </span></p>
+            <p> Hourly Rate: $ <span id="Rate"> 0 </span></p>
+            <p> Hours Worked: <span id="Hours"> 0 </span></p>
+            <p> Dependents: <span id="Dependents"> 0 </span></p>
+            <p> Gross Pay: $ <span id="Gross"> 0 </span></p>
+            <p> Tax: % <span id="Tax"> 0 </span></p>
+            <p> Net Pay: $ <span id="Net"> 0 </span></p>
+        </div>
+    </body>
+</html>
