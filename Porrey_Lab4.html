@@ -16,51 +16,51 @@
                 document.write('<tr>');                                                     //open table row
                 document.write('<td width="50">' + "First Name" + '</td>');                 //create cell for "first name" prompt
                 document.write('<td width="50">' + firstName.toUpperCase() + '</td>');      //create cell for first name response 
-                //document.write('</tr>');                                                  //close table row
 
                 document.write('<tr>');                                                     //open table row
                 document.write('<td width="50">' + "Last Name" + '</td>');                  //create cell for "last name" prompt
                 document.write('<td width="50">' + lastName.toLowerCase() + '</td>');       //create cell for last name response 
-                //document.write('</tr>');                                                  //close table row
 
-                var input = prompt("Enter Grade " + num + " (-1 to stop):");
+                var score = prompt("Enter Grade " + num + " (-1 to stop):");                //prompts for first grade that will begin loop
 
-			do                                                                              //while loop to prompt students grades to be entered
-			{
-				points = parseInt(input);                                                   //parse points variable to integer
+            while (score != -1 ) 
+            {
 
-				if (Number.isNaN(points) || points < 0) {
-					alert("Please enter a valid number greater than 0");
-				}
+                points = parseInt(score);                                                   //parse to int so total is not string
 
-				else if (points >= 0 && points <= 100) {
+                if (Number.isNaN(points) || points < 0 ) {                                  //check if grade entered is a number and greater than 0
+                    alert("Please enter a valid number greater than 0");                    //alert to type valid entry
+                }
+
+                else if (points >= 0 && points <= 100) {
 					document.write('<tr>');                                                 //open table row
 					document.write('<td width="50">' + "Grade " + num + " " + '</td>');     //create cell for "points" prompt
 					document.write('<td width="50">' + points + '</td>');                   //create cell for points response
-					//document.write('</tr>');
 
-					total += points;
-					num++;                                                                  
+					total += points;                                                        //adds up total points entered
+					num++;                                                                  //inreases num which raises the grade entry #
 				}
 
                 else {
-                        var points = prompt("Please re-enter Grade "+num+":");
+                        var points = prompt("Please re-enter Grade "+num+":");              //prompt to re-enter number if number greater than 100 or less than 0 is entered
                     }
 
-				input = prompt("Enter Grade " + num + " (-1 to stop):");
-
-			}   while (input != "-1")
+				score = prompt("Enter Grade " + num + " (-1 to stop):");                    //restart loop unless -1 typed
+                
+            }
 
                     num--;                                                                  //last -1 entry not counted
                     
                     var average = (total/num).toFixed(2);
+                    alert(average);
                     document.write('</table>');
                     document.write("<p> Semester Average: "+average+" </p> <hr>");
                     
                     var grade = Math.floor(average/10);
+                    alert(grade);
 
                     
-                    switch(true)
+                    switch(true)                                                            //switch statement that will write out semester average message
                     {
                         case (grade >= 9 && grade <= 10):
                             document.write('<p> Based on your semester average, your grade falls between 90 and 100% </p>');
@@ -87,29 +87,13 @@
                             break;
                     }
                 
-                document.write("<p>" + "You have earned a(n) "+grade+" this semester." + "</p>");
+                document.write("<p>" + "You have earned a(n) "+grade+" this semester." + "</p>");           //writes out final grade letter
             }
         </script> 
     </head>
     <body>
-		<header>
-			<a href="index.html"> <h1> Program Directory </h1> </a>
-			<hr> <br> <br>
-		</header>
-		
-		<nav>
-			<a href="index.html"> Directory </a> &nbsp;
-			<a href="Porrey_Lab1"> Program 1 </a> &nbsp;
-			<a href="Porrey_Lab2"> Program 2 </a> &nbsp;
-			<a href="Porrey_Lab3"> Program 3 </a> &nbsp;
-			<a href="Porrey_Lab4"> Program 4 </a> &nbsp;
-		</nav>
-		<br> <br> <hr> <br> <br>
-		
         <h1> Student Grade Report </h1>
         <h3> Click the button to begin! </h3>
         <input type="button" value="Calculate" onClick="getStudent()">
     </body>
-
 </html>
-
