@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>
+            CIS 223 Program 5
+        </title>
+
+        <script>
+            function getDiamond() 
+            {
+                var row = 1; var base = 1; var symbol = "* "; var col = 0;
+
+                symbol = prompt("Pick a keyboard symbol for your diamond, like #", " ");
+                base = prompt("How big is the width of your diamond? (Value must be greater than 0)", " ");
+
+                base = parseInt(base);
+                while(base <1)
+                {
+                    base = prompt("Value must be greater than 0");
+                    base = parseInt(base);
+                }
+
+                for (row = 1; row <= base; row++) {
+                    
+                    for (space = 1; space <= base - row; space++) {
+                        document.write("&nbsp;&nbsp;");
+                    }
+
+                    for(col = 1; col <= row; col++)
+
+                    document.write("&nbsp;" + symbol);
+                    document.write("<br />");
+
+                }
+
+                for (row = base - 1; row >= 1; row--) {
+                    for (space = 1; space <= base - row; space++) {
+                        document.write("&nbsp;&nbsp;");
+                    }
+
+                    for(col = 1; col <= row; col++)
+
+                    document.write("&nbsp;" + symbol);
+                    document.write("<br />");
+                }
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1> Shapes & Symbols </h1>
+        <table align="center" width="70%"><tr><td colspan="2">
+            <a href="#" onmouseover="document.photo.src='darth-vader.jpg';" onmouseout = "document.photo.src='anakin.jpg';"> 
+            <img src="anakin.jpg" alt="Anakin Skywalker" name="photo"/> </a>
+                <h1> Lightsaber </h1>
+                <input type="button" value="Create your shape!" onclick="getDiamond()"/> 
+            </td></tr></table>
+    </body>
+</html>
