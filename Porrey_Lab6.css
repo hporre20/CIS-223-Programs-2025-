@@ -1,0 +1,23 @@
+table {
+    width: 95%;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    width: 40%;
+    border: 1px solid;
+}
+
+td.option {
+    text-align: center;
+    width: 30%;
+}
+
+fieldset {
+    width: 90%;
+}

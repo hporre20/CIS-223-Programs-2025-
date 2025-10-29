@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="Porrey_Lab6.css">
+        <title> CIS 223 Lab 6 </title>
+
+        <script type="text/javascript">
+            function customerName() {
+            
+            //replace "your" with name of customer in span customerName
+            var name = document.getElementById('yourName');
+            var customerName = name.value;
+            document.getElementById('customerName').innerHTML = customerName + "'s " + " ";
+            }
+
+
+
+            //get size choice values
+            function getSize() {
+
+            var sizeCost = 0;
+            var size = "";
+
+            var size1 = document.getElementById('small');
+            var size2 = document.getElementById('medium');
+            var size3 = document.getElementById('large');
+            var size4 = document.getElementById('extra');
+
+            //write size choice in td sizeOption and price in td sizePrice
+            if (size1.checked == true) {
+                sizeCost = 8.00;
+                size = "Small";
+            }
+
+            else if (size2.checked == true) {
+                sizeCost = 10.00;
+                size = "Medium";
+            }
+
+            else if (size3.checked == true) {
+                sizeCost = 12.00;
+                size = "Large";
+            }
+
+            else {
+                sizeCost = 14.00;
+                size = "Extra Large";
+            }
+
+            //write price of pizza size in td sizePrice
+            document.getElementById('sizePrice').innerHTML = "$" + sizeCost.toFixed(2);
+
+            //write size of pizza in td sizeOption
+            document.getElementById('sizeOption').innerHTML = size;
+
+            return sizeCost;
+
+            }
+
+
+
+            //get topping choices
+            function getToppings() {
+                
+                var toppingCost = 0;
+                var toppings = "";
+                
+                var topping1 = document.getElementById('topping1');
+                var topping2 = document.getElementById('topping2');
+                var topping3 = document.getElementById('topping3');
+                var topping4 = document.getElementById('topping4');
+                var topping5 = document.getElementById('topping5');
+
+                if (topping1.checked) {
+                    toppingCost += 1.50;
+                    toppings += "Pepperoni" + "<br>";
+                }
+
+                if (topping2.checked) {
+                    toppingCost += 1.50;
+                    toppings += "Sausage" + "<br>";
+                }
+
+                if (topping3.checked) {
+                    toppingCost += 1.50;
+                    toppings += "Bacon" + "<br>";
+                }                                                   
+
+                if (topping4.checked) {
+                    toppingCost += 1.50;
+                    toppings += "Onions" + "<br>";
+                }
+
+                if (topping5.checked) {
+                    toppingCost += 1.50;
+                    toppings += "Spinach" + "<br>";
+                }
+
+                //write toppings choice(s) in td toppingOption
+                document.getElementById('toppingOption').innerHTML = toppings;
+
+                //calculate cost of toppings & write toppings cost in td toppingPrice
+                document.getElementById('toppingPrice').innerHTML = "$" + toppingCost.toFixed(2);
+
+                return toppingCost;
+            }
+
+
+            
+            function getDelivery() {
+
+                var deliveryCost = 0;
+
+                var deliveryType = document.getElementById('deliveryType');
+                var deliveryValue = deliveryType.value;
+
+                if (deliveryValue === "Delivery") {
+                    deliveryCost = 2;
+                }
+
+                //write delivery choice in td deliveryOption
+                document.getElementById('deliveryOption').innerHTML = deliveryValue;
+
+                //write delivery cost in td deliveryPrice
+                document.getElementById('deliveryPrice').innerHTML = "$" + deliveryCost.toFixed(2);
+
+                return deliveryCost;
+            }
+
+
+
+                //calculate total cost
+            function getTotal() {
+
+                var sizeCost = getSize();
+                var toppingCost = getToppings();
+                var deliveryCost = getDelivery();
+
+                var total = sizeCost + toppingCost + deliveryCost;
+
+                document.getElementById('currentTotal').innerHTML = total.toFixed(2);
+            }
+
+
+
+
+            function confirmOrder() {
+                if (confirm("Would you like to submit your order?") == true) {
+                        window.open("Porrey_Lab6Page2.html", "_self");
+                }
+
+                else {
+                    alert("Confirmation cancelled!")
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1> Order Your Pizza Below </h1>
+        <form>
+            <label for="yourName"> Name: </label>
+                <input type="text" id="yourName" onblur="customerName()"/>
+                    <br><br><br>
+            <fieldset>
+                <legend> Please choose your size of pizza: </legend>
+                    <input type="radio" id="small" name="size" value="8" onclick="getSize()" required>
+                        <label for="sizeChoice1"> Small $8.00</label> 
+                            <br>
+                    <input type="radio" id="medium" name="size" value="10" onclick="getSize()">
+                        <label for="sizeChoice2"> Medium $10.00</label>
+                            <br>
+                    <input type="radio" id="large" name="size" value="12" onclick="getSize()">
+                        <label for="sizeChoice3"> Large $12.00</label>
+                            <br>
+                    <input type="radio" id="extra" name="size" value="14" onclick="getSize()">
+                        <label for="sizeChoice4"> Extra Large $14.00</label>
+                </fieldset>
+
+                    <br><br>
+
+                <fieldset>
+                    <legend> Please choose your toppings ($1.50 each): </legend>
+                        <input type="checkbox" id="topping1" name="Pepperoni" onclick="getToppings()">
+                            <label for="topping1"> Pepperoni </label>
+                                <br>
+                        <input type="checkbox" id="topping2" name="Sausage" onclick="getToppings()">
+                            <label for="topping2"> Sausage </label>
+                                    <br>
+                        <input type="checkbox" id="topping3" name="Bacon" onclick="getToppings()">
+                            <label for="topping3"> Bacon </label>
+                                <br>
+                        <input type="checkbox" id="topping4" name="Onions" onclick="getToppings()">
+                            <label for="topping4"> Onions </label>
+                                <br>
+                        <input type="checkbox" id="topping5" name="Spinach" onclick="getToppings()">
+                            <label for="topping5"> Spinach </label>
+                                <br>
+                </fieldset>
+
+                    <br><br>
+
+                <select id="deliveryType" name="delivery" onchange="getDelivery()">
+                    <option id="pickup" value="Pickup"> Pickup </option>
+                    <option id="delivery" value="Delivery"> Delivery </option>
+                </select>
+
+                    <br><br><br>
+                
+                <input type="button" value="Confirm Your Order Details" onclick="confirmOrder()"/>
+                <input type="reset">
+        </form>
+            
+            <br><br>
+
+        <h1> <span id="customerName"> Your </span> Order </h1>
+
+        <table>
+            <tr>
+                <th> Description </th>
+                <th> Option </th>
+                <th> Price </th>
+            </tr>
+            <tr>
+                <td> Size </td>
+                <td class="option" id="sizeOption"> </td>
+                <td class="option" id="sizePrice"> </td>
+            </tr>
+            <tr>
+                <td> Toppings </td>
+                <td class="option" id="toppingOption"> </td>
+                <td class="option" id="toppingPrice"> </td>
+            </tr>
+            <tr>
+                <td> Pickup / Delivery </td>
+                <td class="option" id="deliveryOption"> </td>
+                <td class="option" id="deliveryPrice"> </td>
+            </tr>
+        </table>
+
+        <h3> Your Current Total is: $ <span id="currentTotal"></span></h3>
+
+            <br><br>
+
+    </body>
+</html>
