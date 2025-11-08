@@ -1,0 +1,30 @@
+<!Doctype html>
+<html>
+    <head>
+        <title> CIS 223 Chapter 7 Program </title>
+        <link rel="stylesheet" href="Porrey_Lab7.css">
+    </head>
+    <body onload="displayWelcome()">
+        <div id="date"></div>
+        <div id="time"></div>
+        <h1> Wheel of Fortune! </h1>
+        <h3> Welcome to the game<span id="playerName"></span> ! </h3>
+        <h4> You will have 10 guesses to figure out the phrase below. Enter one letter at a time or solve if you know the answer! </h4>
+            <br><br><hr><br><br>
+        <input type="button" id="start" name="start" value="Make a Guess!" onclick="solvePuzzle()"/>
+            
+            <br><br><br>
+
+            <h3 id="category"> Category: Noun </h3>
+                <br><br>
+
+
+        <div> <p id="game"></p></div>
+
+        <div><p id="result"></p></div>
+
+        <div><p id="attempts"></p></div>
+        
+        <script type="text/javascript" src="Porrey_Lab7.js"></script>
+    </body>
+</html> 
