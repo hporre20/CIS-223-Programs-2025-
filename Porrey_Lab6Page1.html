@@ -14,8 +14,6 @@
             document.getElementById('customerName').innerHTML = customerName + "'s " + " ";
             }
 
-
-
             //get size choice values
             function getSize() {
 
@@ -43,9 +41,14 @@
                 size = "Large";
             }
 
-            else {
+            else if (size4.checked == true) {
                 sizeCost = 14.00;
                 size = "Extra Large";
+            }
+
+            else {
+                sizeCost = 0;
+                size = "";
             }
 
             //write price of pizza size in td sizePrice
@@ -131,7 +134,7 @@
 
 
                 //calculate total cost
-            function getTotal() {
+            function updateTotal() {
 
                 var sizeCost = getSize();
                 var toppingCost = getToppings();
@@ -143,36 +146,27 @@
             }
 
 
-
-
             function confirmOrder() {
-                if (confirm("Would you like to submit your order?") == true) {
-                        window.open("Porrey_Lab6Page2.html", "_self");
+                               
+                var sizeCost = getSize();
+
+                if (sizeCost == 0) {
+                    alert ("Please choose a size!");
                 }
 
                 else {
-                    alert("Confirmation cancelled!")
+                    if (confirm("Would you like to submit your order? Click OK to submit order or click CANCEL to cancel.") == true) {
+                        window.open("Porrey_Lab6Page2.html", "_self");
+                    }
+
+                    else {
+                        document.write("Your order has been cancelled.");s
+                    }
                 }
             }
         </script>
     </head>
     <body>
-        <header>
-			<a href="index.html"> <h1> Program Directory </h1> </a>
-			<hr> <br> <br>
-		</header>
-		
-		<nav>
-			<a href="index.html"> Directory </a> &nbsp;
-			<a href="Porrey_Lab1"> Program 1 </a> &nbsp;
-			<a href="Porrey_Lab2"> Program 2 </a> &nbsp;
-			<a href="Porrey_Lab3"> Program 3 </a> &nbsp;
-			<a href="Porrey_Lab4"> Program 4 </a> &nbsp;
-            <a href="Porrey_loops"> Program 5 </a> &nbsp;
-            <a href="Porrey_Lab6Page1"> Program 6 </a> &nbsp;
-		</nav>
-		<br> <br> <hr> <br> <br>
-        
         <h1> Order Your Pizza Below </h1>
         <form>
             <label for="yourName"> Name: </label>
@@ -180,16 +174,16 @@
                     <br><br><br>
             <fieldset>
                 <legend> Please choose your size of pizza: </legend>
-                    <input type="radio" id="small" name="size" value="8" onclick="getSize()" required>
+                    <input type="radio" id="small" name="size" value="8" onclick="updateTotal()" required>
                         <label for="sizeChoice1"> Small $8.00</label> 
                             <br>
-                    <input type="radio" id="medium" name="size" value="10" onclick="getSize()">
+                    <input type="radio" id="medium" name="size" value="10" onclick="updateTotal()">
                         <label for="sizeChoice2"> Medium $10.00</label>
                             <br>
-                    <input type="radio" id="large" name="size" value="12" onclick="getSize()">
+                    <input type="radio" id="large" name="size" value="12" onclick="updateTotal()">
                         <label for="sizeChoice3"> Large $12.00</label>
                             <br>
-                    <input type="radio" id="extra" name="size" value="14" onclick="getSize()">
+                    <input type="radio" id="extra" name="size" value="14" onclick="updateTotal()">
                         <label for="sizeChoice4"> Extra Large $14.00</label>
                 </fieldset>
 
@@ -197,26 +191,27 @@
 
                 <fieldset>
                     <legend> Please choose your toppings ($1.50 each): </legend>
-                        <input type="checkbox" id="topping1" name="Pepperoni" onclick="getToppings()">
+                        <input type="checkbox" id="topping1" name="Pepperoni" onclick="updateTotal()">
                             <label for="topping1"> Pepperoni </label>
                                 <br>
-                        <input type="checkbox" id="topping2" name="Sausage" onclick="getToppings()">
+                        <input type="checkbox" id="topping2" name="Sausage" onclick="updateTotal()">
                             <label for="topping2"> Sausage </label>
                                     <br>
-                        <input type="checkbox" id="topping3" name="Bacon" onclick="getToppings()">
+                        <input type="checkbox" id="topping3" name="Bacon" onclick="updateTotal()">
                             <label for="topping3"> Bacon </label>
                                 <br>
-                        <input type="checkbox" id="topping4" name="Onions" onclick="getToppings()">
+                        <input type="checkbox" id="topping4" name="Onions" onclick="updateTotal()">
                             <label for="topping4"> Onions </label>
                                 <br>
-                        <input type="checkbox" id="topping5" name="Spinach" onclick="getToppings()">
+                        <input type="checkbox" id="topping5" name="Spinach" onclick="updateTotal()">
                             <label for="topping5"> Spinach </label>
                                 <br>
                 </fieldset>
 
                     <br><br>
 
-                <select id="deliveryType" name="delivery" onchange="getDelivery()">
+                <select id="deliveryType" name="delivery" onchange="updateTotal()">
+                    <option id="Choose delivery option"> Choose delivery option </option>
                     <option id="pickup" value="Pickup"> Pickup </option>
                     <option id="delivery" value="Delivery"> Delivery </option>
                 </select>
@@ -224,7 +219,7 @@
                     <br><br><br>
                 
                 <input type="button" value="Confirm Your Order Details" onclick="confirmOrder()"/>
-                <input type="reset">
+                <input type="reset" value="Start Over">
         </form>
             
             <br><br>
